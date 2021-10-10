@@ -4,7 +4,7 @@ d61e30a1010fe3e1dab106d3a2df0f21
 const base = "https://www.flickr.com/services/rest/?";
 const method = "flickr.interestingness.getList";
 const key = "d61e30a1010fe3e1dab106d3a2df0f21";
-const per_page = 5; 
+const per_page = 20; 
 const tagmode = "any"; //기본값이므로 굳이 안쓰겠다  
 const privacy_filter = 5; //기본값이므로 굳이 안쓰겠다 
 const format = "json"; 
