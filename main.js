@@ -38,7 +38,7 @@ fetch(url) //url호출
         htmls+=`
             <li class="item">
                 <div>
-                    <a href="#">
+                    <a href=${imgSrcBig}>
                         <img src=${imgSrc} alt="">
                     </a>
                     <p>${data.title}</p>
@@ -53,6 +53,7 @@ fetch(url) //url호출
     
     //동적으로 생성된 이미지의 전체 갯수를 구함 
     const imgs = frame.querySelectorAll("img"); 
+    console.dir(imgs[0]); 
     const len = imgs.length; 
     let count =0; 
 
@@ -64,6 +65,11 @@ fetch(url) //url호출
             //카운트값이 전체 이미지갯수와 동일해지면 
             //모든 이미지소스가 로딩이 완료되면 isoLayout 함수 호출 
             if(count==len) isoLayout();
+        }
+
+        //만약 img DOM요소에 이미지 소스가 없거나 엑박이 뜨게 되면 해당 내용은 숨김 처리 
+        el.onerror = e =>{
+            e.currentTarget.closest(".item").style.display = "none"; 
         }
     }
    

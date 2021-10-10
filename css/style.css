@@ -35,3 +35,19 @@ body{
 #wrap #list li div p{
     font:12px/1.2 arial; color: #777; margin-top: 10px; margin-bottom: 10px;
 }
+
+@media screen and (max-width:1599px) {
+    #wrap #list li { width:calc(100% / 5);  }
+}
+@media screen and (max-width:1399px) {
+    #wrap #list li { width:calc(100% / 4);  }
+}
+@media screen and (max-width:999px) {
+    #wrap #list li { width:calc(100% / 3);  }
+}
+@media screen and (max-width:749px) {
+    #wrap #list li { width:calc(100% / 2);  }
+}
+@media screen and (max-width:439px) {
+    #wrap #list li { width:calc(100% / 1);  }
+}
