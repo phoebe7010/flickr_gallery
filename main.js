@@ -4,7 +4,7 @@ d61e30a1010fe3e1dab106d3a2df0f21
 const base = "https://www.flickr.com/services/rest/?";
 const method = "flickr.interestingness.getList";
 const key = "d61e30a1010fe3e1dab106d3a2df0f21";
-const per_page = 20; 
+const per_page = 50; 
 const tagmode = "any"; //기본값이므로 굳이 안쓰겠다  
 const privacy_filter = 5; //기본값이므로 굳이 안쓰겠다 
 const format = "json"; 
@@ -50,4 +50,35 @@ fetch(url) //url호출
 
     //완성된 DOM문자열을 frame 에 삽입해서 동적 리스트 DOM생성 
     frame.innerHTML = htmls; 
+    
+    //동적으로 생성된 이미지의 전체 갯수를 구함 
+    const imgs = frame.querySelectorAll("img"); 
+    const len = imgs.length; 
+    let count =0; 
+
+    //이미지의 갯수만큼 반복을 돌면서 
+    for(let el of imgs){
+        //각 이미지의 소스까지 로딩이 완료되면 1씩 count값 증가 
+        el.onload =()=>{
+            count++; 
+            //카운트값이 전체 이미지갯수와 동일해지면 
+            //모든 이미지소스가 로딩이 완료되면 isoLayout 함수 호출 
+            if(count==len) isoLayout();
+        }
+    }
+   
 });
+
+//isotope 호출 
+function isoLayout(){
+    //isoLayout 함수 호출 될때 list에 on클래스 를 붙여서 
+    //아래에서 위로 올라오는 초기 모션 추가 
+    //이미지로딩이 될 때까지 모든 이미지가 isoLayout이 적용되지 않으므로 
+    //지저분한 레이아웃을 숨기기 위한 용도 
+    frame.classList.add("on"); 
+    new Isotope("#list", {
+        itemSelector : ".item", 
+        columnWidth : ".item",
+        transitionDuration : "0.5s"
+    })
+}

@@ -10,6 +10,12 @@ body{
 #wrap{
     width: 100%; box-sizing: border-box; padding: 50px; overflow: hidden;
 }
+#wrap #list {
+    opacity: 0; transform: translateY(100px); transition: 1s;
+}
+#wrap #list.on{
+    opacity: 1; transform: translateY(0px);
+}
 #wrap #list::after{
     content:''; display: block; clear: both;
 }
